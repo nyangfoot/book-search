@@ -1,4 +1,6 @@
 # Getting Started with Create React App
+// 피그마 링크
+https://www.figma.com/file/UOswQnIczXwF1vGgy7HTf4/Untitled?node-id=0%3A1
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
