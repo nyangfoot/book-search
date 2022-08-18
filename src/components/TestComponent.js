@@ -5,6 +5,7 @@ function TestComponent() {
         <div>
             test
             min
+            subTest
         </div>
     )
 }
