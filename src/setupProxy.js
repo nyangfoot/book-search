@@ -2,9 +2,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
   app.use(
-    "/v3",
+    "/search",
     createProxyMiddleware({
-      target: "http://dapi.kakao.com",
+      target: "https://dapi.kakao.com/v3",
       changeOrigin: true,
     })
   );
