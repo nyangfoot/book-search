@@ -21,7 +21,6 @@ const BookList = () => {
       {books?.documents?.map((book) => {
         const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
           book;
-          
 
           const click = () => {
           addToOrder(isbn);

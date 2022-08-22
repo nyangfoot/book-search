@@ -1,3 +1,4 @@
+import { computeHeadingLevel } from '@testing-library/react';
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { bookSearch } from '../api/API_KEY';
 import AppStateContext from '../contexts/AppStateConText';
@@ -20,11 +21,11 @@ const AppStateProvider = ({ children }) => {
     bookSearchHttpHandler("리액트", true);
   }, []);
 
-   useEffect(() => {
-     if (query.length > 0) {
-       bookSearchHttpHandler(query, true); // 컴포넌트 마운트 후에, 함수를 호출한다.
-     }
-   }, [query]);
+  useEffect(() => {
+    if (query.length > 0) {
+      bookSearchHttpHandler(query, true); // 컴포넌트 마운트 후에, 함수를 호출한다.
+    }
+  }, [query]);
 
   // book searcch 핸들러
   const bookSearchHttpHandler = async (query, reset, page = bookPage) => {
@@ -39,6 +40,7 @@ const AppStateProvider = ({ children }) => {
     console.log(params);
 
     const { data } = await bookSearch(params); // api 호출
+    // 리스트를 초기화한 후에 다시 랜더링할 것인가를 의미
     if (reset) {
       setBooks(data);
     } else {
@@ -92,15 +94,48 @@ const AppStateProvider = ({ children }) => {
   }, []);
 
 
-  // 최신순 , 가격순 관리 
-  const [order, setOrder] = useState('');
-  const orderBooks = books?.documents?.sort((book1, book2) => book2[order] - book1[order]);
-  const handleNewest = () => setOrder('datetime')
-  const handleHighPrice = () => setOrder('price');
+  // 최신순 , 가격순 관리
+  // 렌더링을 위해 useState 사용
+  // const [order, setOrder] = useState('');
+  // const orderBooks = books?.documents?.sort((book1, book2) => book2[order] - book1[order]);
+
+  // 최신순 정렬
+  const handleNewest = (order) => {
+    // console.log(new Date(documents[order]).getTime());
+    // documents.map((item) => {
+    //   console.log(new Date(item[order]).getTime());
+    // });
+    // 최신순 정렬을 위해서 Date 객체의 getTime 함수로 밀리세컨 단위로 변경
+    const newestBooks = [...books.documents].sort((book1, book2) => new Date(book2[order]).getTime() - new Date(book1[order]).getTime());
+    // console.log(newestBooks);
+    setBooks({
+      documents: newestBooks
+    });
+  }
   
-  const [order2, setOrder2] = useState('');
-  const orderBooks2 = books?.documents?.sort((book1, book2) => book1[order2] - book2[order2]);
-  const handleLowPrice = () => setOrder2('price');
+  // 높은 가격 순 정렬
+  // const handleHighPrice = () => setOrder('price');
+  const handleHighPrice = (order) => {
+    // const highPriceBooks = books?.documents?.sort((book1, book2) => book2[order] - book1[order]);
+
+    const highPriceBooks = [...books.documents].sort((book1, book2) => book2[order] - book1[order]);
+    // console.log(highPriceBooks);
+    setBooks({
+      documents: highPriceBooks
+    });
+  }
+
+  // 낮은 가격 순 정렬
+  // const [order2, setOrder2] = useState('');
+  // const orderBooks2 = books?.documents?.sort((book1, book2) => book1[order2] - book2[order2]);
+  // const handleLowPrice = () => setOrder2('price');
+  const handleLowPrice = (order) => {
+    const lowPriceBooks = [...books.documents].sort((book1, book2) => book1[order] - book2[order]);
+    console.log(lowPriceBooks);
+    setBooks({
+      documents: lowPriceBooks
+    });
+  };
 
   // 모달
   const [updateToggle, setUpdateToggle] = useState(false);
