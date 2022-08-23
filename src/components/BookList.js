@@ -19,9 +19,6 @@ const BookList = () => {
   return (
     <div className='book-list-wrap'>
       {books?.documents?.map((book) => {
-        // const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
-        //   book;
-
         const click = () => {
           addToOrder(book);
         };

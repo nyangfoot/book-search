@@ -7,15 +7,6 @@ const AppStateProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
 
-  //  let isInit = useRef(false);
-  // // // 책 검색
-  //  useEffect(() => {
-  //    if (isInit) {
-  //      bookSearchHttpHandler('나', false); // 컴포넌트 마운트 후에, 함수를 호출한다.
-  //      isInit.current = true
-  //    }
-  //  }, []);
-
   // 첫 화면 초기값 세팅
   useEffect(() => {
     bookSearchHttpHandler("리액트", true);
