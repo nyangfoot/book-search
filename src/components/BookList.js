@@ -35,11 +35,7 @@ const BookList = () => {
             <div className='book-info'>
               <div className='text-of'><b>제목</b> {book.title}</div>
               <div>
-                <b>가격</b> {book.price.toLocaleString()}
-                <p>
-                 <b>할인가 </b> 
-                {sPrice === -1 ? <b>품절</b>:<b>{book.sale_price.toLocaleString()}</b> }
-                </p>
+                  {sPrice === -1 ? <b>품절</b>:<div><b>가격</b>{book.price.toLocaleString()}<b>할인가</b><b>{book.sale_price.toLocaleString()}</b></div> }        
               </div>
               {/* CART아이콘 */}
               <div className='cart-icon'>
