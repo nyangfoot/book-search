@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import BookList from './BookList';
 import useNewest from '../hooks/useNewest';
 import useBooks from '../hooks/useBooks';
@@ -7,11 +6,12 @@ import useBookInfo from '../hooks/useBookInfo';
 import Pagination from '../components/Pagination'
 import '../css/Library.scss'
 
-
 const Library = () => {
+
   const { books, searchBook } = useBooks();
   const { handleNewest, handleHighPrice, handleLowPrice } = useNewest();
   const { bookListCounts, setBookListCounts, handleBookListCounts } = useBookInfo();
+
   const [text, setText] = useState('');
 
   // enter key 눌렀을 때 의미
@@ -40,25 +40,28 @@ const Library = () => {
           />
         </div>
         <div className='line' />
+
         <div className='books-option-wrap'>
+
           <div className='books-orders'>
-            <button onClick={()=>handleNewest('datetime')}>최신순</button>
-            <button onClick={()=>handleHighPrice('price')}>높은 가격 순</button>
-            <button onClick={()=>handleLowPrice('price')}>낮은 가격 순</button>    
+            <button onClick={() => handleNewest('datetime')}>최신순</button>
+            <button onClick={() => handleHighPrice('price')}>높은 가격 순</button>
+            <button onClick={() => handleLowPrice('price')}>낮은 가격 순</button>
           </div>
 
-          <select className='books-option' onChange={handleBookListCounts} value={bookListCounts}>
+          <select className='books-option'
+                  onChange={handleBookListCounts}
+                  value={bookListCounts}>
             <option value='9'>9개</option>
             <option value='12'>12개</option>
             <option value='15'>15개</option>
           </select>
         </div>
         <ul>
-          <BookList  />
+          <BookList />
         </ul>
-      {/* 페이지네이션 */}
-      <Pagination count={bookListCounts}/>
-
+        {/* 페이지네이션 */}
+        <Pagination count={bookListCounts} />
       </div>
     </div>
   );

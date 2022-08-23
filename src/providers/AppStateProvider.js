@@ -7,7 +7,6 @@ const AppStateProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
 
-
   // 첫 화면 초기값 세팅
   useEffect(() => {
     bookSearchHttpHandler("리액트", true);
@@ -19,7 +18,7 @@ const AppStateProvider = ({ children }) => {
       bookSearchHttpHandler(query, true); // 컴포넌트 마운트 후에, 함수를 호출한다.
     }
   }, [query]);
-  
+
   // book searcch 핸들러
   const bookSearchHttpHandler = async (query, reset, page = bookPage) => {
     // paramter 설정
@@ -29,6 +28,7 @@ const AppStateProvider = ({ children }) => {
       page: page, // 페이지번호
       size: bookListCounts, // 한 페이지에 보여 질 문서의 개수
     };
+
     const { data } = await bookSearch(params); // api 호출
     // 리스트를 초기화한 후에 다시 랜더링할 것인가를 의미
     if (reset) {
@@ -43,22 +43,24 @@ const AppStateProvider = ({ children }) => {
     setQuery(text);
     setBookPage(1);
   };
-  
+
   // 장바구니 
   const [orders, setOrders] = useState([]);
   // 장바구니 추가
+  // orders의 orderBook : 책의 정보, quantity: 해당 책의 갯수
+  // useCallback으로 받아오는 book : 선택된 책의 정보
   const addToOrder = useCallback((book) => {
     setOrders((orders) => {
       // 동일한 책을 추가할 땐 2권, 3권 으로 변경해주기 위해 동일한 isbn가 있는지 검사
       const finded = orders.find((order) => order.orderBook.isbn === book.isbn);
-    
+
       // 장바구니에 동일한 책이 없으면 quantity에 1을 넣어줌
       if (finded === undefined) {
         return [...orders, { orderBook: book, quantity: 1 }];
       } // 동일한 책이 있으면
       else {
         return orders.map((order) => {
-           // 동일한 책을 찾아 quantity 값을 증가 시켜주기위함.
+          // 동일한 책을 찾아 quantity 값을 증가 시켜주기위함.
           if (order.orderBook.isbn === book.isbn) {
             return {
               orderBook: book,
@@ -75,7 +77,7 @@ const AppStateProvider = ({ children }) => {
   // 장바구니에서 책 삭제하기
   const remove = useCallback((isbn) => {
     setOrders((orders) => {
-      return orders.filter((order) => order.isbn !== isbn);
+      return orders.filter((order) => order.orderBook.isbn !== isbn);
     });
   }, [orders]);
 
@@ -87,19 +89,19 @@ const AppStateProvider = ({ children }) => {
 
   // [ 최신순 & 가격순 관리 ]
   // 정렬시 검색된 정보가 담긴 페이지 정보(meta)가져오기
-    const metaPage= books.meta;
+  const metaPage = books.meta;
   // 최신순 정렬
+  // sort() 함수로 내림차순 정렬하기 b-a
   const handleNewest = (order) => {
-    // 최신순 정렬을 위해서 Date 객체의 getTime 함수로 밀리세컨 단위로 변경
+    // 최신순 정렬을 위해서 Date 객체의 getTime 함수로 밀리세컨 단위로 변경 + rest 문법
     const newestBooks = [...books.documents].sort((book1, book2) => new Date(book2[order]).getTime() - new Date(book1[order]).getTime());
     setBooks({
       documents: newestBooks,
       meta: metaPage
     });
   }
-  
-  // 높은 가격순 정렬
-  // sort() 함수로 내림차순 정렬하기 b-a
+
+  // 높은 가격 순 정렬
   const handleHighPrice = (order) => {
     const highPriceBooks = [...books.documents].sort((book1, book2) => book2[order] - book1[order]);
     setBooks({
@@ -121,18 +123,19 @@ const AppStateProvider = ({ children }) => {
 
   // 모달 - 장바구니 창
   const [updateToggle, setUpdateToggle] = useState(false);
+
   const onModal = (value) => {
     setUpdateToggle(value)
   }
 
   // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
-  const [bookListCounts, setBookListCounts] = useState(9)
+  const [bookListCounts, setBookListCounts] = useState(9);
 
   const handleBookListCounts = (e) => {
     setBookListCounts(e.target.value);
   }
 
-  const [bookPage, setBookPage] = useState(1)
+  const [bookPage, setBookPage] = useState(1);
 
   const handleBookPage = (value) => {
     setBookPage(value);
@@ -141,7 +144,6 @@ const AppStateProvider = ({ children }) => {
   const handleNextPage = (page) => {
     bookSearchHttpHandler(query, true, page);
   }
-
 
   return (
     <AppStateContext.Provider
@@ -157,12 +159,12 @@ const AppStateProvider = ({ children }) => {
         handleLowPrice,      // 낮은 가격순 정렬 시 사용
         onModal,             // 장바구니 창
         updateToggle,        // 장바구니 담기 전 false /  담은 후 true
-        setUpdateToggle,     
+        setUpdateToggle,
         bookListCounts,      // 한 페이지에 보여질 문서의 개수
-        setBookListCounts,   
+        setBookListCounts,
         handleBookListCounts,// 한 페이지에 보여질 문서의 개수 정렬시 사용 - 9개, 12개, 15개
         bookPage,            // 현재 페이지 위치
-        setBookPage,         
+        setBookPage,
         handleBookPage,      // 클릭한 페이지로 이동
         handleNextPage       // 다음 페이지로 이동
       }}>
