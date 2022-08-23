@@ -35,9 +35,6 @@ const BookList = () => {
             <div className='book-info'>
               <div className='text-of'><b>제목</b> {book.title}</div>
               <div>
-                 <b>제목</b> {book.title}
-              </div>
-              <div>
                 <b>가격</b> {book.price.toLocaleString()}
                 <p>
                  <b>할인가 </b> 
