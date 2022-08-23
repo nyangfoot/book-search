@@ -6,15 +6,10 @@ import '../css/BookList.scss';
 import defaultImage from '../assets/no-picture.jpg';
 import { Link } from 'react-router-dom';
 
-
-
-
 const BookList = () => {
 
   const { books } = useBooks();
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
-
-  // console.log(books);
 
   return (
     <div className='book-list-wrap'>
@@ -22,9 +17,7 @@ const BookList = () => {
         const click = () => {
           addToOrder(book);
         };
-        
-   
-        
+
         return (
           <div className='info-wrap' key={book.title}>
             {/* 책 이미지 */}
@@ -39,8 +32,8 @@ const BookList = () => {
             <div className='book-info'>
               <div className='text-of'><b>제목</b> {book.title}</div>
               <div>
-              <span>정상가 {book.price.toLocaleString()} </span>  <br /> 
-              <b>할인가</b> {book.sale_price.toLocaleString()}
+                <span>정상가 {book.price.toLocaleString()} </span>  <br />
+                <b>할인가</b> {book.sale_price.toLocaleString()}
                 {/* <p>{datetime}</p> */}
               </div>
               {/* CART아이콘 */}
@@ -58,6 +51,5 @@ const BookList = () => {
     </div>
   );
 };
-
 
 export default BookList;
