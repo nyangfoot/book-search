@@ -1,17 +1,12 @@
-import React from 'react';
 import './App.css';
-import MainPage from './page/MainPage';
-import AppStateProvider from './providers/AppStateProvider';
+import TestComponent from './components/TestComponent';
 
 function App() {
   return (
     <div>
-      <AppStateProvider>
-        <MainPage />
-      </AppStateProvider>
+      <TestComponent/>
     </div>
   );
 }
 
 export default App;
-
