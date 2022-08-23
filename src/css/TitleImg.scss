@@ -4,6 +4,8 @@
     height: 384px;
     display: flex;
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-image: url(../assets/book-white.jpg);
 
     .max-wrap {
