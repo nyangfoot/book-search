@@ -16,6 +16,17 @@ const BookList = () => {
         const click = () => {
            addToOrder(book);
          };
+
+        //  품절 값 
+       const sPrice = book.sale_price;
+      //  console.log("s"+sPrice);     
+      //  console.log("st"+typeof(sPrice));     
+        
+
+
+        // console.log(typeof(book.sale_price));
+        // console.log(book.sale_price);
+
         return (
           <div className="info-wrap" key={book.title}>
             {/* 책 이미지 */}
@@ -27,6 +38,7 @@ const BookList = () => {
               />
               </a>
             </div>
+            
 
             {/* 북 정보 */}
             <div className="book-info">
@@ -34,11 +46,16 @@ const BookList = () => {
                  <b>제목</b> {book.title}
               </div>
               <div>
+             
                 <b>가격</b> {book.price.toLocaleString()}
                 <p>
-                 <b>할인가</b> {book.sale_price.toLocaleString()}
+                 <b>할인가 </b> 
+                 {/* {book.sale_price.toLocaleString()} */}
+                {sPrice === -1 ? <b>품절</b>:<b>{book.sale_price.toLocaleString()}</b> }
                 </p>
               </div>
+
+
               {/* CART아이콘 */}
               <div className="cart-icon">
                 <MdShoppingCart
