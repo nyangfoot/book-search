@@ -85,6 +85,7 @@ const Order = () => {
 
               <div className='total-btn'>
                 <button className='remove-btn' onClick={() => { onModal(false) }}>닫기</button>
+                {/* "장바구니 담기" 버튼 클릭시 '장바구니에 담았습니다' 팝업창 */}
                 <button className='cart-btn' onClick={() => alert('장바구니에 담았습니다')}>장바구니 담기</button>
               </div>
             </div>
