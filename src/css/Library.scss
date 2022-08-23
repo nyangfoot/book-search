@@ -1,0 +1,50 @@
+
+.Library {
+    width: 100%;
+    height: auto;
+
+    .max-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+           
+    .book-search {
+        text-align: center;
+        padding-top: 3em;
+
+        input {
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            background: none;
+            padding-bottom: 0.5rem;
+            width: 240px;
+        }
+
+    }
+
+    .line {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 3em;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .books-option-wrap{
+        display: flex;
+        margin-top: 1rem;
+        justify-content: space-between;
+
+        .books-orders {
+           button {
+            margin-right: 0.5em;
+           }
+        }
+
+        .books-option {
+
+        }
+    }
+    
+    }
+}
