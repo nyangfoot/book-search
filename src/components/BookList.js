@@ -22,8 +22,9 @@ const BookList = () => {
         const click = () => {
           addToOrder(book);
         };
-
-
+        
+   
+        
         return (
           <div className='info-wrap' key={book.title}>
             {/* 책 이미지 */}
@@ -36,10 +37,10 @@ const BookList = () => {
 
             {/* 북 정보 */}
             <div className='book-info'>
-              <div><b>제목</b> {book.title}</div>
+              <div className='text-of'><b>제목</b> {book.title}</div>
               <div>
-                <b>가격</b> {book.price.toLocaleString()}
-                <p><b>할인가</b> {book.sale_price.toLocaleString()}</p>
+              <span>정상가 {book.price.toLocaleString()} </span>  <br /> 
+              <b>할인가</b> {book.sale_price.toLocaleString()}
                 {/* <p>{datetime}</p> */}
               </div>
               {/* CART아이콘 */}
@@ -47,7 +48,7 @@ const BookList = () => {
                 <MdShoppingCart onClick={() => {
                   click()
                   onModal(true)
-                }} size="18" />
+                }} size="22" />
               </div>
             </div>
 

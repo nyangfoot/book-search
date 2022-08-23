@@ -66,14 +66,14 @@ const AppStateProvider = ({ children }) => {
     setOrders((orders) => {
       // 동일한 책을 추가할 땐 2권, 3권 으로 변경해주기 위해 동일한 isbn가 있는지 검사
       const finded = orders.find((order) => order.orderBook.isbn === book.isbn);
-    
+
       // 장바구니에 동일한 책이 없으면 quantity에 1을 넣어줌
       if (finded === undefined) {
         return [...orders, { orderBook: book, quantity: 1 }];
       } // 동일한 책이 있으면
       else {
         return orders.map((order) => {
-           // 동일한 책을 찾아 quantity 값을 증가 시켜주기위함.
+          // 동일한 책을 찾아 quantity 값을 증가 시켜주기위함.
           if (order.orderBook.isbn === book.isbn) {
             return {
               orderBook: book,
@@ -101,8 +101,8 @@ const AppStateProvider = ({ children }) => {
 
 
   // [ 최신순 & 가격순 관리 ] 렌더링을 위해 useState 사용
- // 정렬시 검색된 정보가 담긴 페이지 정보(meta)가져오기
-    const metaPage=books.meta;
+  // 정렬시 검색된 정보가 담긴 페이지 정보(meta)가져오기
+  const metaPage = books.meta;
   // 최신순 정렬
   // sort() 함수로 내림차순 정렬하기 b-a
   const handleNewest = (order) => {
@@ -161,7 +161,6 @@ const AppStateProvider = ({ children }) => {
     bookSearchHttpHandler(query, true, page);
   }
 
-
   return (
     <AppStateContext.Provider
       value={{
@@ -176,12 +175,12 @@ const AppStateProvider = ({ children }) => {
         handleLowPrice,      // 낮은 가격순 정렬 시 사용
         onModal,             // 장바구니 창
         updateToggle,        // 장바구니 담기 전 false /  담은 후 true
-        setUpdateToggle,     
+        setUpdateToggle,
         bookListCounts,      // 한 페이지에 보여질 문서의 개수
-        setBookListCounts,   
+        setBookListCounts,
         handleBookListCounts,// 한 페이지에 보여질 문서의 개수 정렬시 사용 - 9개, 12개, 15개
         bookPage,            // 현재 페이지 위치
-        setBookPage,         
+        setBookPage,
         handleBookPage,      // 클릭한 페이지로 이동
         handleNextPage       // 다음 페이지로 이동
       }}>

@@ -10,7 +10,7 @@ function Header() {
                 <div className="max-wrap">
                     <h1>
                         <a href="#">
-                            <img src={require('../assets/logo.png')} />
+                            <img src={require('../assets/header-logo.png')} />
                         </a>
                     </h1>
                 </div>
