@@ -5,14 +5,11 @@ import { MdShoppingCart } from "react-icons/md";
 import '../css/BookList.scss';
 import defaultImage from '../assets/no-picture.jpg';
 
-
-
-
 const BookList = () => {
 
   const { books } = useBooks();
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
- 
+
   console.log(books);
 
   return (
@@ -20,13 +17,10 @@ const BookList = () => {
       {books?.documents?.map((book) => {
         // const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
         //   book;
-
-          const click = () => {
+        const click = () => {
           addToOrder(book);
         };
-        
-   
-        
+
         return (
           <div className='info-wrap' key={book.title}>
             {/* 책 이미지 */}
@@ -45,8 +39,8 @@ const BookList = () => {
                 {/* <p>{datetime}</p> */}
               </div>
               {/* CART아이콘 */}
-              <div className='cart-icon'> 
-                <MdShoppingCart onClick={ () => {
+              <div className='cart-icon'>
+                <MdShoppingCart onClick={() => {
                   click()
                   onModal(true)
                 }} size="18" />
