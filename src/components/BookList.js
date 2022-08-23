@@ -19,30 +19,30 @@ const BookList = () => {
   return (
     <div className='book-list-wrap'>
       {books?.documents?.map((book) => {
-        const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
-          book;
+        // const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
+        //   book;
 
           const click = () => {
-          addToOrder(isbn);
+          addToOrder(book);
         };
         
    
         
         return (
-          <div className='info-wrap' key={title}>
+          <div className='info-wrap' key={book.title}>
             {/* 책 이미지 */}
             <div>
-              <a href={url} target='_blank' rel='noreferrer'>
-                <img src={thumbnail ? thumbnail : defaultImage} alt={thumbnail} />
+              <a href={book.url} target='_blank' rel='noreferrer'>
+                <img src={book.thumbnail ? book.thumbnail : defaultImage} alt={book.thumbnail} />
               </a>
             </div>
 
             {/* 북 정보 */}
             <div className='book-info'>
-              <div><b>제목</b> {title}</div>
+              <div><b>제목</b> {book.title}</div>
               <div>
-                <b>가격</b> {price.toLocaleString()}
-                <p><b>할인가</b> {sale_price.toLocaleString()}</p>
+                <b>가격</b> {book.price.toLocaleString()}
+                <p><b>할인가</b> {book.sale_price.toLocaleString()}</p>
                 {/* <p>{datetime}</p> */}
               </div>
               {/* CART아이콘 */}
