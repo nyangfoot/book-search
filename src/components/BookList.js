@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import useBooks from '../hooks/useBooks';
 import useActions from '../hooks/useActions';
 import { MdShoppingCart } from "react-icons/md";

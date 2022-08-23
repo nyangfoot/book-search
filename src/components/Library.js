@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import BookList from './BookList';
 import useNewest from '../hooks/useNewest';
 import useBooks from '../hooks/useBooks';
