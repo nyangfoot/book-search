@@ -29,6 +29,9 @@ const AppStateProvider = ({ children }) => {
       page: page, // 페이지번호
       size: bookListCounts, // 한 페이지에 보여 질 문서의 개수
     };
+
+    console.log(params);
+
     const { data } = await bookSearch(params); // api 호출
     // 리스트를 초기화한 후에 다시 랜더링할 것인가를 의미
     if (reset) {
@@ -37,6 +40,8 @@ const AppStateProvider = ({ children }) => {
       // 검색 된 값들 출력
       setBooks(books.documents.concat(data.documents));
     }
+
+    console.log(books)
   };
   // 검색 후 첫번째 페이지에 검색어 유지
   const searchBook = (text) => {
@@ -85,42 +90,41 @@ const AppStateProvider = ({ children }) => {
   }, [orders]);
 
 
-  // [ 최신순 & 가격순 관리 ]
-  // 렌더링을 위해 useState 사용
-  // const [order, setOrder] = useState('');
-  // const orderBooks = books?.documents?.sort((book1, book2) => book2[order] - book1[order]);
-
+  // [ 최신순 & 가격순 관리 ] 렌더링을 위해 useState 사용
+ // 정렬시 검색된 정보가 담긴 페이지 정보(meta)가져오기
+    const metaPage=books.meta;
   // 최신순 정렬
   // sort() 함수로 내림차순 정렬하기 b-a
   const handleNewest = (order) => {
     // 최신순 정렬을 위해서 Date 객체의 getTime 함수로 밀리세컨 단위로 변경 + 스프레드 문법
     const newestBooks = [...books.documents].sort((book1, book2) => new Date(book2[order]).getTime() - new Date(book1[order]).getTime());
-    // console.log(newestBooks);
     setBooks({
-      documents: newestBooks
+      documents: newestBooks,
+      meta: metaPage
     });
   }
   
-  // 높은 가격순 정렬
-  // sort() 함수로 내림차순 정렬하기 b-a
-  // const handleHighPrice = () => setOrder('price');
+  // 높은 가격 순 정렬
   const handleHighPrice = (order) => {
     // const highPriceBooks = books?.documents?.sort((book1, book2) => book2[order] - book1[order]);
 
     const highPriceBooks = [...books.documents].sort((book1, book2) => book2[order] - book1[order]);
     // console.log(highPriceBooks);
     setBooks({
-      documents: highPriceBooks
+      documents: highPriceBooks,
+      meta: metaPage
     });
   }
 
   // 낮은 가격순 정렬
   // sort() 함수로 오름차순 정렬하기 a-b
   const handleLowPrice = (order) => {
+    console.log(books.meta);
     const lowPriceBooks = [...books.documents].sort((book1, book2) => book1[order] - book2[order]);
     console.log(lowPriceBooks);
     setBooks({
-      documents: lowPriceBooks
+      documents: lowPriceBooks,
+      meta: metaPage
     });
   };
 
