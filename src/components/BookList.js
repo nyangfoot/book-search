@@ -4,6 +4,7 @@ import useActions from '../hooks/useActions';
 import { MdShoppingCart } from "react-icons/md";
 import '../css/BookList.scss';
 import defaultImage from '../assets/no-picture.jpg';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,8 +13,8 @@ const BookList = () => {
 
   const { books } = useBooks();
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
- 
-  console.log(books);
+
+  // console.log(books);
 
   return (
     <div className='book-list-wrap'>
@@ -21,19 +22,19 @@ const BookList = () => {
         // const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
         //   book;
 
-          const click = () => {
+        const click = () => {
           addToOrder(book);
         };
-        
-   
-        
+
+
         return (
           <div className='info-wrap' key={book.title}>
             {/* 책 이미지 */}
             <div>
-              <a href={book.url} target='_blank' rel='noreferrer'>
+              {/* 책 이미지 클릭 시, 해당 책의 상세 페이지 이동 */}
+              <Link to='book-detail' state={book}>
                 <img src={book.thumbnail ? book.thumbnail : defaultImage} alt={book.thumbnail} />
-              </a>
+              </Link>
             </div>
 
             {/* 북 정보 */}
@@ -45,8 +46,8 @@ const BookList = () => {
                 {/* <p>{datetime}</p> */}
               </div>
               {/* CART아이콘 */}
-              <div className='cart-icon'> 
-                <MdShoppingCart onClick={ () => {
+              <div className='cart-icon'>
+                <MdShoppingCart onClick={() => {
                   click()
                   onModal(true)
                 }} size="18" />

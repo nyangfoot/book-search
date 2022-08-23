@@ -38,7 +38,7 @@ const AppStateProvider = ({ children }) => {
       size: bookListCounts, // 한 페이지에 보여 질 문서의 개수
     };
 
-    console.log(params);
+    // console.log(params);
 
     const { data } = await bookSearch(params); // api 호출
     // 리스트를 초기화한 후에 다시 랜더링할 것인가를 의미
@@ -48,7 +48,7 @@ const AppStateProvider = ({ children }) => {
       setBooks(books.documents.concat(data.documents));
     }
 
-    console.log(books)
+    // console.log(books)
   };
 
   const searchBook = (text) => {
@@ -108,7 +108,7 @@ const AppStateProvider = ({ children }) => {
       documents: newestBooks
     });
   }
-  
+
   // 높은 가격 순 정렬
   const handleHighPrice = (order) => {
     const highPriceBooks = [...books.documents].sort((book1, book2) => book2[order] - book1[order]);
@@ -120,6 +120,7 @@ const AppStateProvider = ({ children }) => {
 
   // 낮은 가격 순 정렬
   const handleLowPrice = (order) => {
+    console.log(books.meta);
     const lowPriceBooks = [...books.documents].sort((book1, book2) => book1[order] - book2[order]);
     // console.log(lowPriceBooks);
     setBooks({
@@ -153,30 +154,31 @@ const AppStateProvider = ({ children }) => {
 
 
   return (
-    <AppStateContext.Provider
-      value={{
-        books,
-        searchBook,
-        orders,
-        addToOrder,
-        remove,
-        removeAll,
-        handleNewest,
-        handleHighPrice,
-        handleLowPrice,
-        onModal,
-        updateToggle,
-        setUpdateToggle,
-        bookListCounts,
-        setBookListCounts,
-        handleBookListCounts,
-        bookPage,
-        setBookPage,
-        handleBookPage,
-        handleNextPage
-      }}>
-      {children}
-    </AppStateContext.Provider>
+      <AppStateContext.Provider
+        value={{
+          books,
+          searchBook,
+          orders,
+          addToOrder,
+          remove,
+          removeAll,
+          handleNewest,
+          handleHighPrice,
+          handleLowPrice,
+          onModal,
+          updateToggle,
+          setUpdateToggle,
+          bookListCounts,
+          setBookListCounts,
+          handleBookListCounts,
+          bookPage,
+          setBookPage,
+          handleBookPage,
+          handleNextPage
+        }}>
+        {children}
+      </AppStateContext.Provider>
+
   );
 };
 

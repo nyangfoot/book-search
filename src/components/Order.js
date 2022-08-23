@@ -28,7 +28,7 @@ const Order = () => {
         return orderBook.sale_price * quantity;
       })
       .reduce((l, r) => l + r, 0);
-  }, [orders, books]);
+  }, [orders]);
 
 
 
@@ -49,39 +49,37 @@ const Order = () => {
           <div className='order-wrap'>
             <h3 className='order-title'> <MdShoppingCart size={24} /> <b>도서 선택</b></h3>
             {orders.map((order) => {
-              const { orderBook, quantity} = order;
-              
+              const { orderBook, quantity } = order;
+
               const click = () => {
                 // 삭제는 선택한 책의 isbn값으로 비교하기 위해 isbn값만 넘겨줌
                 remove(orderBook.isbn);
               };
               return (
-                <>
-                  <div className='item' key={orderBook.isbn}>
-                    <div className='bookImg'>
-                      <img src={orderBook.thumbnail} alt={orderBook.thumbnail} />
-                    </div>
-                    <div className='content'>
-                      <p key={orderBook.isbn} className='bookTitle'>
-                        {orderBook.title} <br /> {quantity}권
-                      </p>
-                      <p className='bookPrice'>
-                        <p className='price-text'>정상가 {orderBook.price.toLocaleString()}<b>원</b></p>
-                        할인가 {(orderBook.sale_price * quantity).toLocaleString()}<span>원</span>
-                      </p>
-                    </div>
-                    <div className='icon'>
-                      <span><MdDelete onClick={click} size={18} /></span>
+                <div className='item' key={orderBook.isbn}>
+                  <div className='bookImg'>
+                    <img src={orderBook.thumbnail} alt={orderBook.thumbnail} />
+                  </div>
+                  <div className='content'>
+                    <p key={orderBook.isbn} className='bookTitle'>
+                      {orderBook.title} <br /> {quantity}권
+                    </p>
+                    <div className='bookPrice'>
+                      <p className='price-text'>정상가 {orderBook.price.toLocaleString()}<b>원</b></p>
+                      할인가 {(orderBook.sale_price * quantity).toLocaleString()}<span>원</span>
                     </div>
                   </div>
-                </>
+                  <div className='icon'>
+                    <span><MdDelete onClick={click} size={18} /></span>
+                  </div>
+                </div>
               );
             })}
             <div>
               <hr />
               <div className='total-item'>
                 <div className='total'>합계금액</div>
-                <div className='bookTotalPrice'>{totalPrice}<span> 원</span></div>
+                <div className='bookTotalPrice'>{totalPrice.toLocaleString()}<span> 원</span></div>
 
               </div>
 
