@@ -34,7 +34,6 @@ const BookList = () => {
               <div>
                 <span>정상가 {book.price.toLocaleString()} </span>  <br />
                 <b>할인가</b> {book.sale_price.toLocaleString()}
-                {/* <p>{datetime}</p> */}
               </div>
               {/* CART아이콘 */}
               <div className='cart-icon'>
