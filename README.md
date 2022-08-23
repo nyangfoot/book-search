@@ -1,10 +1,4 @@
-
-# Getting Started with Create React App
-// 피그마 링크
-https://www.figma.com/file/UOswQnIczXwF1vGgy7HTf4/Untitled?node-id=0%3A1
-
 # Book Search & Book Basket
-
 
 | schedule | 8/18 | 8/19 | 8/20 | 8/21 | 8/22 | 8/23 | 8/24 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | 

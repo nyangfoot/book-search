@@ -1,16 +1,17 @@
+import React from 'react';
 import './App.css';
-import BookSearch from './components/BookSearch';
-import BooksList from './components/BooksList';
-import BooksOrder from './components/BooksOrder';
+import MainPage from './page/MainPage';
+import AppStateProvider from './providers/AppStateProvider';
 
 function App() {
   return (
     <div>
-      <BookSearch/>
-      <BooksOrder/>
-      <BooksList />
+      <AppStateProvider>
+        <MainPage />
+      </AppStateProvider>
     </div>
   );
 }
 
 export default App;
+

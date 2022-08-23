@@ -1,0 +1,131 @@
+$Blue: #00BFFF ;
+
+// @mixin total-btns() {
+//     padding: 10px 15px 10px 15px;
+// }
+
+.order-wrap {
+    // display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 35rem;
+    min-height: 40rem;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 1rem;
+    overflow: hidden;
+
+    .order-title {
+        font-size: 2em;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+
+        b {
+            margin-left: 5px;
+        }
+    }
+
+
+    .item {
+        display: flex;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+  
+
+    .bookImg {
+        img {
+            width: 80px;
+            height: auto;
+        }
+    }
+
+    .content {
+        line-height: 1.7em;
+        margin-left: 0.5em;
+
+        .bookTitle {
+            font-size: 1.2em;
+        };
+
+        .bookPrice {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: $Blue;
+            .price-text {
+                font-size: 0.8em;
+                color: #c0c0c0;
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    .icon {
+        span {
+        cursor: pointer;
+        
+        &:hover {
+            transition: 0.5s;
+            color: $Blue;
+        }
+
+        &:active {
+            color: darken($Blue, 10%);
+        }
+        }
+    }
+
+}
+
+    .total-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        .total {
+            font-size: 1.2rem;
+        }
+
+        .bookTotalPrice {
+            font-size: 2rem;
+            color: $Blue;
+            font-weight: bold;
+
+            span {
+                font-size: 1.2rem;
+            }
+        }
+    };
+
+    .total-btn {
+        display: flex;
+        justify-content: space-between;
+        height: 4rem;
+            
+        button {
+            border-radius: 5px;
+            height: auto;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            width: 30%;
+            margin-right: 1rem;
+            background: #595959;
+        }
+
+        .cart-btn {
+            flex: 1;
+            background: $Blue;
+        }
+    }
+
+}
+
