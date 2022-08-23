@@ -18,17 +18,17 @@ const Order = () => {
   //   updateToggle(false)
   //   console.log(closeModal)
   // }
-  console.log(orders);
-  // const totalPrice = useMemo(() => {
-  //   return orders
-  //     .map((order) => {
-  //       const { isbn, quantity } = order;
-  //       const book = books.documents.find((b) => b.isbn === isbn);
-  //       // console.log(books.documents.find((b) => b.isbn === isbn));
-  //       return book.sale_price * quantity;
-  //     })
-  //     .reduce((l, r) => l + r, 0);
-  // }, [orders, books]);
+
+  // console.log(orders);
+  const totalPrice = useMemo(() => {
+    return orders
+      .map((order) => {
+        const { orderBook, quantity } = order;
+        // console.log(books.documents.find((b) => b.isbn === isbn));
+        return orderBook.sale_price * quantity;
+      })
+      .reduce((l, r) => l + r, 0);
+  }, [orders, books]);
 
 
 
@@ -52,7 +52,8 @@ const Order = () => {
               const { orderBook, quantity} = order;
               
               const click = () => {
-                // remove(isbn);
+                // 삭제는 선택한 책의 isbn값으로 비교하기 위해 isbn값만 넘겨줌
+                remove(orderBook.isbn);
               };
               return (
                 <>
@@ -65,8 +66,8 @@ const Order = () => {
                         {orderBook.title} <br /> {quantity}권
                       </p>
                       <p className='bookPrice'>
-                        <p className='price-text'>정상가 {orderBook.price}<b>원</b></p>
-                        할인가 {orderBook.sale_price * quantity}<span>원</span>
+                        <p className='price-text'>정상가 {orderBook.price.toLocaleString()}<b>원</b></p>
+                        할인가 {(orderBook.sale_price * quantity).toLocaleString()}<span>원</span>
                       </p>
                     </div>
                     <div className='icon'>
@@ -80,7 +81,7 @@ const Order = () => {
               <hr />
               <div className='total-item'>
                 <div className='total'>합계금액</div>
-                {/* <div className='bookTotalPrice'>{totalPrice}<span> 원</span></div> */}
+                <div className='bookTotalPrice'>{totalPrice}<span> 원</span></div>
 
               </div>
 
