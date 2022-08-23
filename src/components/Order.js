@@ -64,13 +64,13 @@ const Order = () => {
                   <p key={isbn} className='bookTitle'>
                     {book.title} <br /> {order.quantity}권
                   </p>
-                  <p className='bookPrice'>
+                  <div className='bookPrice'>
                    <p className='price-text'>정상가 {book.price}<b>원</b></p>
                    할인가 {book.sale_price * order.quantity}<span>원</span>
-                  </p>
+                  </div>
                 </div>
                 <div className='icon'>
-                 <span><MdDelete onClick={click} size={18} /></span>
+                 <span><MdDelete onClick={click} size={24} /></span>
                 </div>
               </div>
             </>
@@ -85,7 +85,7 @@ const Order = () => {
           </div>
 
           <div className='total-btn'>
-                <button className='remove-btn' onClick={() => {onModal(false)}}>닫기</button>
+                <button className='del-btn' onClick={() => {onModal(false)}}>닫기</button>
                 <button className='cart-btn' onClick={() => alert('장바구니에 담았습니다')}>장바구니 담기</button>
           </div>
         </div>

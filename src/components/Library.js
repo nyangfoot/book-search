@@ -15,6 +15,7 @@ const Library = () => {
 
   const [text, setText] = useState('');
 
+  // enter key 눌렀을 때 의미
   const onEnter = (e) => {
     if (e.keyCode === 13) {
       searchBook(text);
@@ -44,9 +45,9 @@ const Library = () => {
         <div className='books-option-wrap'>
 
         <div className='books-orders'>
-            <button onClick={handleNewest}>최신순</button>
-            <button onClick={handleHighPrice}>높은 가격 순</button>
-            <button onClick={handleLowPrice}>낮은 가격 순</button>    
+            <button onClick={()=>handleNewest('datetime')}>최신순</button>
+            <button onClick={()=>handleHighPrice('price')}>높은 가격 순</button>
+            <button onClick={()=>handleLowPrice('price')}>낮은 가격 순</button>    
         </div>
 
         <select className='books-option'
