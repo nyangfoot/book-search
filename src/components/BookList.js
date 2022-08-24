@@ -10,19 +10,18 @@ const BookList = () => {
 
   const { books } = useBooks();
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
-
   return (
     <div className='book-list-wrap'>
-      {books?.documents?.map((book) => {
+      {books?.documents?.map((book, idx) => {
         const click = () => {
            addToOrder(book);
          };
 
         //  품절 값 
        const sPrice = book.sale_price;
-
         return (
-          <div className='info-wrap' key={book.title}>
+          // map 함수 사용 시 유니크 key 값이 필요
+          <div className='info-wrap' key={`${book.isbn}-${idx}`}>
             {/* 책 이미지 */}
             <div>
               {/* 책 이미지 클릭 시, 해당 책의 상세 페이지 이동 */}
