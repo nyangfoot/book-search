@@ -13,7 +13,7 @@
 | 발표 |  |  |  |  |  |  | :heavy_check_mark: |
 
 
-## :open_file_folder: 라우터와 useContext
+## :open_file_folder: Router와 useContext
 - 책 상세 페이지 기능 구현하기 위해 라우터를 사용함
 - useContext 사용 이유 및 방법
 
