@@ -9,9 +9,6 @@ function App() {
   return (
     <BrowserRouter>
     <div>
-      {/* <AppStateProvider>
-        <MainPage />
-      </AppStateProvider> */}
       <Routes>
         <Route path='/' element={<AppStateProvider>
           <MainPage />

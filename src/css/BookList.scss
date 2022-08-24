@@ -1,6 +1,7 @@
 $mdPurple: #9370DB;
 $dsBlue: #00Bfff;
-
+$lightGrey: #c0c0c0;
+$red: #F20101;
 .book-list-wrap {
     display: grid;
     width: 100%;
@@ -13,32 +14,65 @@ $dsBlue: #00Bfff;
     .info-wrap {
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0.35);
-
-        img {
+        
+        .book-info-img {
+            position: relative;
             width: 100%;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-            &:hover {
-                transition: 0.5s;
-                opacity: 0.5;
+            height: auto;
+        img {
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+                &:hover {
+                    transition: 0.5s;
+                    opacity: 0.5;
+                }
             }
+        }
+
+        .out-of-stock {
+            position: absolute;
+            top: 0px;
+            background-color: rgba(0, 0, 0, 0.50);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $red;
+            font-size: 4em;
         }
 
         .book-info {
             width: 100%;
-            height: 70px;
+            height: 7em;
             background: #f0f0f0;
             margin-top: -3px;
             padding: 1em;
             position: relative;
+            font-size: 1.5em;
+            line-height: 1.7em;
 
-            b {
-                line-height: 1.5em;
+            .text-of {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 25rem;
+            };
+
+            span {
+                text-decoration: line-through;
+                color: $lightGrey;
+                font-size: 0.9em;
             }
 
+            b {
+                
+            }
+            
             .cart-icon {
                 position: absolute;
-                right: 5%;
-                bottom: 5%;
+                bottom: 0.5em;
+                right: 0.5em;
                 cursor: pointer;
 
                 &:hover {
@@ -47,9 +81,56 @@ $dsBlue: #00Bfff;
                 }
 
                 &:active {
-                    color: darken($dsBlue, 10%);
+                 color: darken($dsBlue, 10%);
                 }
+            }
+
+            strong {
+                color: $red;
             }
         }
     }
+};
+
+
+@media (max-width: 950px) {
+    
+    .book-list-wrap {
+        .info-wrap {
+
+            .book-info {
+
+                .text-of {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 10em;
+                }         
+            }
+        }
+    };
+
+};
+
+
+
+@media (max-width: 620px) {
+
+    .book-list-wrap {
+        grid-template-columns: repeat(2, 1fr);
+
+        .info-wrap {
+         
+            .book-info {
+
+                .text-of {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 5em;
+                }         
+            }
+        }
+    };
+
 };

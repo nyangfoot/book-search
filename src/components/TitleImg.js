@@ -5,7 +5,7 @@ function TitleImg() {
     return (
         <div className="TitleImg">
             <div className="max-wrap">
-                <h2>Library</h2>
+                <h2>Book Search</h2>
             </div>
         </div>
     )
