@@ -1,64 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import useBooks from '../hooks/useBooks';
 import useActions from '../hooks/useActions';
 import { MdShoppingCart } from "react-icons/md";
 import '../css/BookList.scss';
-import defaultImage from '../assets/no-picture.jpg';
-
-
-
+import defaultImage from '../assets/NoPicture.png';
+import { Link } from 'react-router-dom';
+import  _ from 'lodash/uniqBy';
 
 const BookList = () => {
 
   const { books } = useBooks();
+  // _uniqBy(books, 'isbn')
+
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
- 
-  console.log(books);
 
   return (
     <div className='book-list-wrap'>
       {books?.documents?.map((book) => {
-        const { isbn, thumbnail, title, price, sale_price, publisher, url, datetime } =
-          book;
-          
+        const click = () => {
+           addToOrder(book);
+         };
 
-          const click = () => {
-          addToOrder(isbn);
-        };
-        
+        //  품절 값 
+       const sPrice = book.sale_price;
+
         return (
-          <div className='info-wrap' key={title}>
+          <div className='info-wrap' key={book.isbn}>
             {/* 책 이미지 */}
             <div>
-              <a href={url} target='_blank' rel='noreferrer'>
-                <img src={thumbnail ? thumbnail : defaultImage} alt={thumbnail} />
-              </a>
+              {/* 책 이미지 클릭 시, 해당 책의 상세 페이지 이동 */}
+              <Link to='book-detail' state={book}>
+                <div className='book-info-img'>
+                  <img src={book.thumbnail ? book.thumbnail : defaultImage} alt={book.thumbnail} />
+                  {sPrice === -1 ?
+                    <div className='out-of-stock'>품절</div>
+                    :
+                    <div></div>
+                  }
+                </div>
+              </Link>
             </div>
 
             {/* 북 정보 */}
             <div className='book-info'>
-              <div className='text-of'><b>제목</b> {title}</div>
+              <div className='text-of'><b>제목</b> {book.title}</div>
               <div>
-              <span>정상가 {price.toLocaleString()} </span>  <br /> 
-              <b>할인가</b> {sale_price.toLocaleString()}
-                {/* <p>{datetime}</p> */}
+                <p>
+                <b>정상가 </b>
+                {sPrice === -1 ?  <strong>품절</strong>: <span> {book.price.toLocaleString()}</span>}
+                </p>
+                <p>
+                 <b>할인가 </b> 
+                {sPrice === -1 ? <strong>품절</strong>:<b>{book.sale_price.toLocaleString()}</b> }
+                </p>
               </div>
               {/* CART아이콘 */}
-              <div className='cart-icon'> 
-                <MdShoppingCart onClick={ () => {
-                  click()
+              <div className='cart-icon'>
+                <MdShoppingCart onClick={() => {
+                  sPrice === -1 ? console.log('품절입니다') : click()
                   onModal(true)
                 }} size="22" />
               </div>
             </div>
-
           </div>
         );
       })}
     </div>
   );
 };
-
 
 export default BookList;
