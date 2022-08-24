@@ -1,11 +1,7 @@
-$Blue: #00BFFF ;
+$Blue: #00BFFF;
 
-// @mixin total-btns() {
-//     padding: 10px 15px 10px 15px;
-// }
-
-.order-wrap {
-    // display: none;
+// mixin 안에 속성들을 @include '이름' 을 부여하여 속성 전달 가능
+ @mixin order-wrap() {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
@@ -16,6 +12,11 @@ $Blue: #00BFFF ;
     border-radius: 15px;
     padding: 2em;
     overflow: hidden;
+    z-index: 9999;
+ }
+
+.order-wrap {
+    @include order-wrap();
 
     hr {
         opacity: 0.5;

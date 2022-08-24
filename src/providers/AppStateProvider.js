@@ -1,30 +1,34 @@
 import { computeHeadingLevel } from '@testing-library/react';
-import React, { useCallback, useEffect, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useState, useRef, useReducer } from 'react';
 import { bookSearch } from '../api/API_KEY';
+import ScrollTop from '../components/ScrollTop';
 import AppStateContext from '../contexts/AppStateConText';
+import Library from '../components/Library';
 
 const AppStateProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
-  
-  // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
-  const [bookListCounts, setBookListCounts] = useState(9);
 
   // 첫 화면 초기값 세팅
   useEffect(() => {
     bookSearchHttpHandler("리액트", true);
-  }, [bookListCounts]);
+  }, []);
 
   // API 호출이 검색어를 통해 이루어짐-> 검색어 값이 있는 경우 실행
   useEffect(() => {
+    console.log('search')
     if (query.length > 0) {
       bookSearchHttpHandler(query, true); // 컴포넌트 마운트 후에, 함수를 호출한다.
+    } else {
+      // 초기값 세팅을 위함
+      bookSearchHttpHandler("리액트", true);
     }
-  }, [query, bookListCounts]);
+  }, [query, bookListCounts, bookPage]);
 
   // book searcch 핸들러
   const bookSearchHttpHandler = async (query, reset, page = bookPage) => {
     // paramter 설정
+    
     const params = {
       query: query, //검색어
       sort: 'accuracy', // accuracy | recency 정확도 or 최신
@@ -46,7 +50,6 @@ const AppStateProvider = ({ children }) => {
     setQuery(text);
     setBookPage(1);
   };
-
   // 장바구니 
   const [orders, setOrders] = useState([]);
   // 장바구니 추가
@@ -56,7 +59,6 @@ const AppStateProvider = ({ children }) => {
     setOrders((orders) => {
       // 동일한 책을 추가할 땐 2권, 3권 으로 변경해주기 위해 동일한 isbn가 있는지 검사
       const finded = orders.find((order) => order.orderBook.isbn === book.isbn);
-
       // 장바구니에 동일한 책이 없으면 quantity에 1을 넣어줌
       if (finded === undefined) {
         return [...orders, { orderBook: book, quantity: 1 }];
@@ -117,7 +119,6 @@ const AppStateProvider = ({ children }) => {
   // sort() 함수로 오름차순 정렬하기 a-b
   const handleLowPrice = (order) => {
     const lowPriceBooks = [...books.documents].sort((book1, book2) => book1[order] - book2[order]);
-
     setBooks({
       documents: lowPriceBooks,
       meta: metaPage
@@ -132,7 +133,7 @@ const AppStateProvider = ({ children }) => {
   }
 
   // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
-  // const [bookListCounts, setBookListCounts] = useState(9);
+  const [bookListCounts, setBookListCounts] = useState(9);
 
   const handleBookListCounts = (e) => {
     setBookListCounts(e.target.value);
@@ -147,7 +148,7 @@ const AppStateProvider = ({ children }) => {
   const handleNextPage = (page) => {
     bookSearchHttpHandler(query, true, page);
   }
-
+  
   return (
     <AppStateContext.Provider
       value={{
@@ -165,11 +166,11 @@ const AppStateProvider = ({ children }) => {
         setUpdateToggle,
         bookListCounts,      // 한 페이지에 보여질 문서의 개수
         setBookListCounts,
-        handleBookListCounts,// 한 페이지에 보여질 문서의 개수 정렬시 사용 - 9개, 12개, 15개
+        // handleBookListCounts,// 한 페이지에 보여질 문서의 개수 정렬시 사용 - 9개, 12개, 15개
         bookPage,            // 현재 페이지 위치
         setBookPage,
-        handleBookPage,      // 클릭한 페이지로 이동
-        handleNextPage       // 다음 페이지로 이동
+        handleBookPage,
+        handleNextPage
       }}>
       {children}
     </AppStateContext.Provider>

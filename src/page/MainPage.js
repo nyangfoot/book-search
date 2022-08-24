@@ -3,12 +3,15 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Library from '../components/Library';
 import Order from '../components/Order'
+import ScrollTop from '../components/ScrollTop';
 import TitleImg from '../components/TitleImg';
 import '../css/MainPage.scss'
 
 const MainPage = () => {
   return (
     <div>
+      {/* ScrollTop!! */}
+      <ScrollTop />
       {/* 헤더 */}
       <Header />
 
