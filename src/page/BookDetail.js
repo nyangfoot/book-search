@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import defaultImage from '../assets/NoPicture.png';
-import '../css/BookDetail.css'
+// import '../css/BookDetail.css'
+import '../css/BookDetail.scss'
 
 function BookDetail() {
     // 선택한 책의 정보를 state 값이 갖고 있음!!
