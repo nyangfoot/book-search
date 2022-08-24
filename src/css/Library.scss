@@ -1,5 +1,5 @@
 $mdPurple: #9370DB;
-$dsBlue: #00Bfff;
+$brown: #A27B5C;
 $lightGrey: #a9a9a9;
 
 .Library {
@@ -53,16 +53,16 @@ $lightGrey: #a9a9a9;
 
                 &:hover {
                     transition: 0.5s;
-                    background: $dsBlue;
+                    background: $brown;
                     border: none;
                     color: #fff;
-                    border: 1px solid $dsBlue;
+                    border: 1px solid $brown;
                     font-weight: bold;
                 }
 
                 &:active {
-                    background: darken($dsBlue, 10%);
-                    border: 1px solid darken($dsBlue, 10%);
+                    background: darken($brown, 10%);
+                    border: 1px solid darken($brown, 10%);
                 }
            }
         }
