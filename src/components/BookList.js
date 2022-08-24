@@ -57,7 +57,7 @@ const BookList = () => {
               {/* CART아이콘 */}
               <div className='cart-icon'>
                 <MdShoppingCart onClick={() => {
-                  sPrice === -1 ? console.log('품절입니다') : click()
+                  sPrice === -1 ? alert('품절 입니다.') : click()
                   onModal(true)
                 }} size="22" />
               </div>
