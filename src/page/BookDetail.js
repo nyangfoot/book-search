@@ -8,27 +8,10 @@ function BookDetail() {
     // 선택한 책의 정보를 state 값이 갖고 있음!!
     const { state } = useLocation();
     console.log(state);
-    // console.log(state.datetime); // 2021-10-31T00:00:00.000+09:00
                            
     var newdate = state.datetime;
     var result1 = newdate.substring(0, 10);
-    // console.log(result1); // 2021-10-31
-
-    // 더보기 닫기 버튼
-    // const [ isShowMore, setIsShowMore ] = useState<boolean>(false);
-    // const textLimit = useRef<number>(20);
-    // const state.contents = useMemo(() => {
-    //     const shortReview: string = state.contents.slice(0, textLimit.current);
-    //     if (state.contents.length > textLimit.current) {
-    //         if (isShowMore) { return state.contents; }
-    //         return shortReview;
-    //     }
-    //     return state.contents;
-    // }, [isShowMore]);
-
-
-
-
+    
     return (
         <div className='view'>
             <div className='bookWrap'>
@@ -53,7 +36,7 @@ function BookDetail() {
                     <div className='bookAuthors'><b>저자 : </b>{` ${state.authors}`}</div>
                     <hr />
                     <div className='bookContents'><b>도서 내용</b><p>{state.contents}</p></div>
-                    <button className='books' onClick={() => window.open(state.url, '_blank')}>더보기</button>
+                    <button className='book-btn' onClick={() => window.open(state.url, '_blank')}>더보기</button>
                 </div>
             </div>
         </div>
