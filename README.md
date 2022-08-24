@@ -12,20 +12,20 @@
 | 발표 준비 |  |  |  |  |  | :heavy_check_mark: |  |
 | 발표 |  |  |  |  |  |  | :heavy_check_mark: |
 
-## 라우터와 useContext
+
+# 라우터와 useContext
 - 책 상세 페이지 기능 구현하기 위해 라우터를 사용함
 - useContext 사용 이유 및 방법
 
 
-## 책 상세 페이지 기능 구현 및 css
-
+# 책 상세 페이지 기능 구현 및 css
 - 품절 가격 변경 (삼항 연산자)
 - 가격 000,000 (toLocaleString())
 - 더보기 버튼 만들기
 - css -> scss 변환하기
 
-## css와 scss의 장단점
+# css와 scss의 장단점
 scss의 장점 : 코드의 가독성과 재사용성이 높음
 scss의 단점 : 
 
-## Header css
+# Header css
