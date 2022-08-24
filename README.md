@@ -33,7 +33,7 @@
 ### scss의 단점 
 
 
-## :mag_right: css와 scss의 차이
+## :mag_right: CSS와 SCSS의 차이
 1. 중첩 기능 -> 코드의 가독성이 높음
 2. $ 변수 사용 -> 공통된 속성 재활용 가능 (color, font 변수로 지정)
 
