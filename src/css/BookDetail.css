@@ -1,7 +1,4 @@
-.root {
-    --lightGrey: #c0c0c0;
-    /* --red: #F20101; */
-}
+
 
 .view {
     width: 100%;
@@ -34,16 +31,9 @@
     /* padding: auto; */
     margin: 20px;
 }
-.bookName h2 {
-
-}
-
-.bookPrice {
-
-}
 .price-line {
     text-decoration: line-through;
-    color: var(--lightGrey);
+    color: #c0c0c0;
     font-size: 0.9em;
 }
 
