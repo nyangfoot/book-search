@@ -10,7 +10,7 @@ import '../css/MainPage.scss'
 const MainPage = () => {
   return (
     <div>
-      {/* ScrollTop */}
+      {/* ScrollTop!! */}
       <ScrollTop />
       {/* 헤더 */}
       <Header />

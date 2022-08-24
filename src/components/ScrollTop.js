@@ -13,6 +13,8 @@ function ScrollTop() {
       window.addEventListener('scroll', updateScroll);
   });
   
+
+  
   const goToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth"})
   };
