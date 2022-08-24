@@ -18,11 +18,9 @@ $red: #F20101;
         top: 50%;
         transform: translate(-50%, -50%);
 
-
         .bookImg{
             margin: 20px;
         }
-        
         
         .bookInfo {
             line-height: 25px;
@@ -45,13 +43,21 @@ $red: #F20101;
                     color: $red;
                     font-size: 20px;
                 }
-            
-  
-            .bookContents {
-                width: 40em;
-            }}
+        
+        }
+         
+             .bookContents {
+                 overflow: hidden;
+                 text-overflow: ellipsis;
+                 width: 44em;
+
+                 .books {
+                    
+                 }
+                
+             }
             hr {
-                width: 500px;
+                width: 100%;
                 border-bottom: 0px;
                 text-align: left;
                 margin-left: 0px;
