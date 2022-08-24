@@ -19,7 +19,7 @@ function BookDetail() {
                     <div className='bookPrice'>
                         <div className='price-text'>
                             <b>정상가 : </b>{state.sale_price === -1 ? <strong className='out-of-stock'>품절</strong> : 
-                                <span>{state.price.toLocaleString()}원</span>
+                                <span className='price-line'>{state.price.toLocaleString()}원</span>
                             }
                         </div>
                             <b>할인가 : </b>{state.sale_price === -1 ? <strong className='out-of-stock'>품절</strong> :
@@ -29,7 +29,7 @@ function BookDetail() {
                     <div className='bookPublisher'><b>출판사 : </b>{state.publisher}</div>
                     <div className='bookAuthors'><b>저자 : </b>{` ${state.authors}` }</div>
                     <hr />
-                    <div className='bookContents'>도서 내용 : {state.contents}</div>
+                    <div className='bookContents'><b>도서 내용</b><p>{state.contents}</p></div>
                 </div>
             </div>
         </div>
