@@ -9,10 +9,10 @@ const AppStateProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
 
-  // 첫 화면 초기값 세팅
-  useEffect(() => {
-    bookSearchHttpHandler("리액트", true);
-  }, []);
+  const [bookPage, setBookPage] = useState(1);
+
+  // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
+  const [bookListCounts, setBookListCounts] = useState(9);
 
   // API 호출이 검색어를 통해 이루어짐-> 검색어 값이 있는 경우 실행
   useEffect(() => {
@@ -131,15 +131,6 @@ const AppStateProvider = ({ children }) => {
   const onModal = (value) => {
     setUpdateToggle(value)
   }
-
-  // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
-  const [bookListCounts, setBookListCounts] = useState(9);
-
-  const handleBookListCounts = (e) => {
-    setBookListCounts(e.target.value);
-  }
-
-  const [bookPage, setBookPage] = useState(1);
 
   const handleBookPage = (value) => {
     setBookPage(value);
