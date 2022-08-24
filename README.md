@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# 피그마 참고 주소
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Book Search & Book Basket
 
-In the project directory, you can run:
+| schedule | 8/18 | 8/19 | 8/20 | 8/21 | 8/22 | 8/23 | 8/24 |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | 
+| 주제 선정 | :heavy_check_mark: |  |  |  |  |  |  |
+| 레이아웃 디자인 | :heavy_check_mark: |  |  |  |  |  |  |
+| 개별 프로젝트 진행 |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
+| 개별 코드 리뷰 및 병합 |  |  |  |  | :heavy_check_mark: |  |  |
+| 발표 준비 |  |  |  |  |  | :heavy_check_mark: |  |
+| 발표 |  |  |  |  |  |  | :heavy_check_mark: |
 
-### `npm start`
+메인페이지 오류 - API 호출 시 도서 제목 필수, 검색창에 제목 기록됨
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+장바구니 오류 - 장바구니 추가 후 검색, 페이지 이동 등 새로운 이벤트 발생 시 에러 값 발생
+        수정 - order파라미터 : 새로운 이벤트 books isbn 값 비교 -> 전체 books 값 저장 : 새로운 이벤트 발생에 isbn 비교
 
-### `npm test`
+정렬 오류 - 최신, 가격 높/낮 정렬 선택 시 정렬불가 
+     수정 - 공통 : 정렬 데이터를 객처로 만듦 -> 프로퍼티 재설정
+            최신: 날짜 값을 new Date 객체의 getTime() 메서드를 이용 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+품절 오류 - 할인 판매가 -1로 출력
+     수정 - 품절로 표시
+     
+동일 ISBN 츨력 & div key Warning 오류 - 출력되는 첫 번째 도서가 고정
+                                 수정 - div key Warnig:index 값 강제 부여 /  
+                                        ISBN 츨력- response값과 디버깅에는 문제없어API 문제로 추정
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+한 페이지 출력 도서 개수 변경 - 오류 : 이벤트가 발생해야만 개수 변경 핸들 실행
+                              수정 : 
