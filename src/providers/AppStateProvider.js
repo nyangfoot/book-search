@@ -1,6 +1,7 @@
 import { computeHeadingLevel } from '@testing-library/react';
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { bookSearch } from '../api/API_KEY';
+import ScrollTop from '../components/ScrollTop';
 import AppStateContext from '../contexts/AppStateConText';
 
 const AppStateProvider = ({ children }) => {
@@ -144,7 +145,7 @@ const AppStateProvider = ({ children }) => {
   const handleNextPage = (page) => {
     bookSearchHttpHandler(query, true, page);
   }
-
+  
   return (
     <AppStateContext.Provider
       value={{
@@ -165,8 +166,8 @@ const AppStateProvider = ({ children }) => {
         handleBookListCounts,// 한 페이지에 보여질 문서의 개수 정렬시 사용 - 9개, 12개, 15개
         bookPage,            // 현재 페이지 위치
         setBookPage,
-        handleBookPage,      // 클릭한 페이지로 이동
-        handleNextPage       // 다음 페이지로 이동
+        handleBookPage,
+        handleNextPage
       }}>
       {children}
     </AppStateContext.Provider>

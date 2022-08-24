@@ -9,7 +9,12 @@ import { Link } from 'react-router-dom';
 const BookList = () => {
 
   const { books } = useBooks();
+  // _uniqBy(books, 'isbn')
+
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
+ 
+  console.log(books);
+
   return (
     <div className='book-list-wrap'>
       {books?.documents?.map((book, idx) => {
