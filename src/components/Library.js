@@ -52,7 +52,7 @@ const Library = () => {
           </div>
 
           <select className='books-option'
-                  onChange={handleBookListCounts}
+                  onChange={(e) => setBookListCounts(e.target.value)}
                   value={bookListCounts}>
             <option value='9'>9개</option>
             <option value='12'>12개</option>
@@ -63,7 +63,7 @@ const Library = () => {
           <BookList />
         </ul>
         {/* 페이지네이션 */}
-        <Pagination count={bookListCounts} />
+        <Pagination count={parseInt( bookListCounts)} />
       </div>
     </div>
   );
