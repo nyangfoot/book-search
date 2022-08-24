@@ -5,11 +5,15 @@ import { MdShoppingCart } from "react-icons/md";
 import '../css/BookList.scss';
 import defaultImage from '../assets/NoPicture.png';
 import { Link } from 'react-router-dom';
+import useBookInfo from '../hooks/useBookInfo';
+
+
 
 const BookList = () => {
 
   const { books } = useBooks();
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
+  const { bookListCounts, setBookListCounts, handleBookListCounts } = useBookInfo();
   return (
     <div className='book-list-wrap'>
       {books?.documents?.map((book, idx) => {
