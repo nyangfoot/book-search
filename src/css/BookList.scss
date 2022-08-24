@@ -1,7 +1,7 @@
 $mdPurple: #9370DB;
 $dsBlue: #00Bfff;
 $lightGrey: #c0c0c0;
-
+$red: #F20101;
 .book-list-wrap {
     display: grid;
     width: 100%;
@@ -15,14 +15,31 @@ $lightGrey: #c0c0c0;
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0.35);
         
-
-        img {
+        .book-info-img {
+            position: relative;
             width: 100%;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-            &:hover {
-                transition: 0.5s;
-                opacity: 0.5;
+            height: auto;
+        img {
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+                &:hover {
+                    transition: 0.5s;
+                    opacity: 0.5;
+                }
             }
+        }
+
+        .out-of-stock {
+            position: absolute;
+            top: 0px;
+            background-color: rgba(0, 0, 0, 0.50);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $red;
+            font-size: 4em;
         }
 
         .book-info {
@@ -66,6 +83,10 @@ $lightGrey: #c0c0c0;
                 &:active {
                  color: darken($dsBlue, 10%);
                 }
+            }
+
+            strong {
+                color: $red;
             }
         }
     }

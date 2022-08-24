@@ -3,7 +3,7 @@ import useBooks from '../hooks/useBooks';
 import useActions from '../hooks/useActions';
 import { MdShoppingCart } from "react-icons/md";
 import '../css/BookList.scss';
-import defaultImage from '../assets/no-picture.jpg';
+import defaultImage from '../assets/NoPicture.png';
 import { Link } from 'react-router-dom';
 
 const BookList = () => {
@@ -27,7 +27,14 @@ const BookList = () => {
             <div>
               {/* 책 이미지 클릭 시, 해당 책의 상세 페이지 이동 */}
               <Link to='book-detail' state={book}>
-                <img src={book.thumbnail ? book.thumbnail : defaultImage} alt={book.thumbnail} />
+                <div className='book-info-img'>
+                  <img src={book.thumbnail ? book.thumbnail : defaultImage} alt={book.thumbnail} />
+                  {sPrice === -1 ?
+                    <div className='out-of-stock'>품절</div>
+                    :
+                    <div></div>
+                  }
+                </div>
               </Link>
             </div>
 
@@ -35,12 +42,23 @@ const BookList = () => {
             <div className='book-info'>
               <div className='text-of'><b>제목</b> {book.title}</div>
               <div>
+<<<<<<< HEAD
                   {sPrice === -1 ? <b>품절</b>:<div><b>가격</b>{book.price.toLocaleString()}<b>할인가</b><b>{book.sale_price.toLocaleString()}</b></div> }        
+=======
+                <p>
+                <b>정상가 </b>
+                {sPrice === -1 ?  <strong>품절</strong>: <span> {book.price.toLocaleString()}</span>}
+                </p>
+                <p>
+                 <b>할인가 </b> 
+                {sPrice === -1 ? <strong>품절</strong>:<b>{book.sale_price.toLocaleString()}</b> }
+                </p>
+>>>>>>> 70ccdddaf8bbc57c39f2e6a5c174c4978d4a9432
               </div>
               {/* CART아이콘 */}
               <div className='cart-icon'>
                 <MdShoppingCart onClick={() => {
-                  click()
+                  sPrice === -1 ? console.log('품절입니다') : click()
                   onModal(true)
                 }} size="22" />
               </div>
