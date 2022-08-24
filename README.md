@@ -23,10 +23,14 @@
 - 가격 000,000 (toLocaleString())
 - 더보기 버튼 만들기
 - css -> scss 변환하기
+![untitled](https://user-images.githubusercontent.com/109749166/186450480-4e2beb13-02b4-4544-80d6-53187e80d0cc.png)
+![image](https://user-images.githubusercontent.com/109749166/186450574-1224ed89-2d7e-485b-8e5f-7c8b2702695a.png)
+
 
 ## css와 scss의 장단점
 scss의 장점 : **코드의 가독성**과 **재사용성**이 높음, **유지 및 관리**가 용이함 <br />
 scss의 단점 : 
+
 
 ## css와 scss의 차이
 1. 중첩 기능 -> 코드의 가독성이 높음
