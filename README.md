@@ -22,6 +22,7 @@
  - 그 중 카카오 Open Api가 문제가 없으며(비교적), 정보가 많아 선택
 
 03. 기본적인 베이스 설명 
+ - 피그마 링크 : https://www.figma.com/file/UOswQnIczXwF1vGgy7HTf4/Untitled?node-id=0%3A1
  - 피그마 시안 -> 완성된 프로젝트 보여주고 기능 설명   
  - style은 전체적으로 scss 사용 (반응형)
    
