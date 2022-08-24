@@ -25,6 +25,7 @@
 - css -> scss 변환하기
 
 ## css와 scss의 장단점
-
+scss의 장점 : 코드의 가독성과 재사용성이 높음
+scss의 단점 : 
 
 ## Header css
