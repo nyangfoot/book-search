@@ -25,14 +25,13 @@
 - css -> scss 변환하기
 <br />
 
-## :sparkles: CSS와 SCSS의 장단점
+## :sparkles: css와 비교한 scss의 장단점
 ### scss의 장점
 **코드의 가독성**과 **재사용성**이 높음 <br />
 **유지 및 관리**가 용이함 <br />
 
-### scss의 단점 
-
 <br />
+
 ## :mag_right: CSS와 SCSS의 차이
 1. 중첩 기능 -> 코드의 가독성이 높음
 2. $ 변수 사용 -> 공통된 속성 재활용 가능 (color, font 변수로 지정)
