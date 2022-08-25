@@ -56,6 +56,19 @@ $red: #F20101;
                  }
                 
              }
+             .book-btn {
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                border: none;
+                color: #A97155;
+                font-size: 1.3rem;
+                font-weight: bold;
+                cursor: pointer;
+                float: right;
+             }
+             
             hr {
                 width: 100%;
                 border-bottom: 0px;

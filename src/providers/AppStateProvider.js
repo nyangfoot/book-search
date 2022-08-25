@@ -16,7 +16,6 @@ const AppStateProvider = ({ children }) => {
 
   // API 호출이 검색어를 통해 이루어짐-> 검색어 값이 있는 경우 실행
   useEffect(() => {
-    console.log('search')
     if (query.length > 0) {
       bookSearchHttpHandler(query, true); // 컴포넌트 마운트 후에, 함수를 호출한다.
     } else {

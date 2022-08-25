@@ -35,7 +35,7 @@ function BookDetail() {
                     <div className='bookAuthors'><b>저자 : </b>{` ${state.authors}`}</div>
                     <hr />
                     <div className='bookContents'><b>도서 내용</b><p>{state.contents}</p></div>
-                    <button className='books' onClick={() => window.open(state.url, '_blank')}>더보기</button>
+                    <button className='book-btn' onClick={() => window.open(state.url, '_blank')}>더보기</button>
                 </div>
             </div>
         </div>
