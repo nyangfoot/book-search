@@ -9,9 +9,14 @@ function App() {
   return (
     <BrowserRouter>
     <div>
-      <AppStateProvider>
-        <MainPage />
-      </AppStateProvider>
+      <Routes>
+        <Route path='/' element={<AppStateProvider>
+          <MainPage />
+        </AppStateProvider>} />
+        <Route path='/book-detail' element={<AppStateProvider>
+          <BookDetail />
+        </AppStateProvider>} />
+      </Routes>
     </div>
     </BrowserRouter>
   );
