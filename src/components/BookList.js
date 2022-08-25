@@ -14,6 +14,7 @@ const BookList = () => {
   const { books } = useBooks();
   const { addToOrder, onModal, updateToggle, setUpdateToggle } = useActions();
   const { bookListCounts, setBookListCounts, handleBookListCounts } = useBookInfo();
+  // console.log(books);
   return (
     <div className='book-list-wrap'>
       {books?.documents?.map((book, idx) => {
