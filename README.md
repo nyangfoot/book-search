@@ -146,6 +146,8 @@
 > 참고자료 출처
 > 
 
+<br/>
+
 ## Skills
 <img src="https://img.shields.io/badge/VS Code-1A1F71?style=flat-square&logo=Visual Studio Code&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/KakaoAPI-FFCD00?style=flat-square&logo=Kakao&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/CSS/SCSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/><br/><br/><br/><br/>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
