@@ -11,8 +11,8 @@ const AppStateProvider = ({ children }) => {
 
   const [bookPage, setBookPage] = useState(1);
 
-   // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
-   const [bookListCounts, setBookListCounts] = useState(9);
+  // 한 페이지에 보여질 문서의 개수 : 9개 (초기값)
+  const [bookListCounts, setBookListCounts] = useState(9);
 
   // API 호출이 검색어를 통해 이루어짐-> 검색어 값이 있는 경우 실행
   useEffect(() => {
