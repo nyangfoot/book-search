@@ -1,0 +1,29 @@
+name: Actions
+on:
+  # main 브랜치에서 push 작업이 일어나면 동작하도록
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 버전 설정
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-versin: 16.16.0
+          cache: npm
+        # 실행 명령어
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      # 이부분은 github에 접근하기 위한 token을 받아 설정해야되는데
+      # 개인 개정의 token을 발급받아두면 되는 것 같다
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 여기서 publish_dir은 빌드 파일이 적용되는 폴더로 설정할 것
+          publish_dir: ./build
