@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CI: false
     steps:
       # 버전 설정
       - uses: actions/checkout@v3
