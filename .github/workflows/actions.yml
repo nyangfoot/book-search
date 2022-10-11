@@ -17,10 +17,18 @@ jobs:
         with:
           node-versin: 16.16.0
           cache: npm
+
+        # .env 파일에 api key 값 설정
+      - name: Setting .env
+        run: |
+          echo "REACT_APP_KAKAO_KEY=${{ secrets.REACT_APP_KAKAO_KEY }}" >> .env
+          cat .env
+      
         # 실행 명령어
       - run: npm ci
       - run: npm test
       - run: npm run build
+      
       # 이부분은 github에 접근하기 위한 token을 받아 설정해야되는데
       # 개인 개정의 token을 발급받아두면 되는 것 같다
       - name: Deploy
