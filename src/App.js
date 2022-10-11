@@ -7,7 +7,7 @@ import BookDetail from './page/BookDetail';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
     <div>
       <Routes>
         <Route path='/' element={<AppStateProvider>
